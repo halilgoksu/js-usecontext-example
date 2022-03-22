@@ -36,7 +36,11 @@ code {
 }
 button{
   height: 5rem;
-  
+  background-color: rgba(230, 77, 77, 0.24);
+  font-size: 1.3rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  border-radius: 5%;
+  cursor: pointer;
 }
 
 body.light {
