@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+
+import { MainContext } from "./context";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const [methods, setMethods] = useState({});
+
+  const appendMethods = (newMethods) => {
+    setMethods({
+      ...methods,
+      ...newMethods,
+    });
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
+  const data = {
+    theme,
+    setTheme,
+    appendMethods,
+    ...methods,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContext.Provider value={data}>
+      <div className="container">
+        <Header />
+        <ThemeSwitcher></ThemeSwitcher>
+        <Footer />
+      </div>
+    </MainContext.Provider>
   );
 }
 
