@@ -1,6 +1,6 @@
 # useContext example
 
-JS
+
 
 
 
